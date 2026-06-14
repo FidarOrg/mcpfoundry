@@ -44,5 +44,13 @@
     "eslint": "^9.9.0",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FidarOrg/mcp-forge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FidarOrg/mcp-forge/issues"
+  },
+  "homepage": "https://github.com/FidarOrg/mcp-forge#readme"
 }
