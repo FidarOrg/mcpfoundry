@@ -15,6 +15,7 @@ interface CreateOptions {
   output?: string;
   lang: string;
   transport: string;
+  http: boolean;
   port: string;
   secure: boolean;
   force: boolean;
@@ -40,7 +41,8 @@ program
   .option("--input <path>", "OpenAPI/Swagger spec — file path OR URL, JSON or YAML")
   .option("--output <dir>", "output directory for the generated server")
   .option("--lang <lang>", "target language: nodejs | python", "nodejs")
-  .option("--transport <transport>", "transport: stdio | http", "stdio")
+  .option("--transport <transport>", "transport: http | stdio", "http")
+  .option("--no-http", "use the stdio transport instead of http")
   .option("--port <port>", "port for the http transport", "3000")
   .option(
     "--secure",
@@ -57,7 +59,8 @@ Examples:
   $ mcpfoundry create --type openapi --input https://petstore3.swagger.io/api/v3/openapi.json --output ./petstore
   $ mcpfoundry create --type database --provider postgres --uri "$DATABASE_URL" --output ./db-server --lang python
   $ mcpfoundry create --type openapi --input ./api.json --output ./secure-server --secure
-  $ mcpfoundry create --type openapi --input ./api.json --output ./http-server --transport http --port 3000
+  $ mcpfoundry create --type openapi --input ./api.json --output ./http-server --port 8080
+  $ mcpfoundry create --type openapi --input ./api.json --output ./stdio-server --no-http
   $ mcpfoundry create --type openapi --input ./api.json --output /tmp/x --dry-run
 `,
   )
@@ -76,10 +79,12 @@ async function run(opts: CreateOptions): Promise<void> {
     throw new Error(`Unsupported --lang "${opts.lang}". Use nodejs or python.`);
   }
 
-  const transport = opts.transport as "stdio" | "http";
+  let transport = opts.transport as "stdio" | "http";
   if (transport !== "stdio" && transport !== "http") {
-    throw new Error(`Unsupported --transport "${opts.transport}". Use stdio or http.`);
+    throw new Error(`Unsupported --transport "${opts.transport}". Use http or stdio.`);
   }
+  // `--no-http` is a shortcut to disable the default http transport.
+  if (opts.http === false) transport = "stdio";
 
   const port = Number(opts.port);
   if (transport === "http" && (!Number.isInteger(port) || port < 1 || port > 65535)) {

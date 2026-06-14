@@ -56,7 +56,8 @@ mcpfoundry create \
 | `--input` | Path to an OpenAPI spec, JSON or YAML (openapi mode) |
 | `--output` | Output directory (required) |
 | `--lang` | `nodejs` (default) or `python` |
-| `--transport` | `stdio` (default) or `http` |
+| `--transport` | `http` (default) or `stdio` |
+| `--no-http` | Shortcut for `--transport stdio` |
 | `--port` | Port for the `http` transport (default `3000`) |
 | `--secure` | Embed the optional ZTAI Security Shield |
 | `--force` | Overwrite a non-empty output directory |
@@ -64,13 +65,18 @@ mcpfoundry create \
 
 ### Transports
 
-By default the server runs over **stdio** — the standard way clients (Claude
-Desktop, Claude Code, etc.) launch a local MCP server. Pass `--transport http`
-to generate a server that listens on `http://localhost:<port>/mcp` instead
-(Streamable HTTP via Express for Node, FastMCP for Python):
+By default the server runs over **HTTP** (Streamable HTTP — Express for Node,
+FastMCP for Python), listening on `http://localhost:<port>/mcp`:
 
 ```bash
-mcpfoundry create --type openapi --input ./openapi.yaml --output ./srv --transport http --port 3000
+mcpfoundry create --type openapi --input ./openapi.yaml --output ./srv --port 3000
+```
+
+To generate a **stdio** server instead — the transport clients like Claude
+Desktop / Claude Code use to launch a local MCP server — disable HTTP:
+
+```bash
+mcpfoundry create --type openapi --input ./openapi.yaml --output ./srv --no-http
 ```
 
 With `--secure` + `--transport http`, the JWT guard verifies an
