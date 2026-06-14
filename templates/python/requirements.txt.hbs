@@ -1,0 +1,5 @@
+fastmcp>=2.0.0
+pydantic>=2.0.0
+{{#if secure}}pyjwt>=2.8.0
+{{/if}}{{#if isDatabase}}psycopg[binary]>=3.1.0
+{{/if}}

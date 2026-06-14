@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { tools } from "./tools.js";
+{{#if secure}}import { verifyStartupToken } from "./security.js";
+{{/if}}
+async function main(): Promise<void> {
+{{#if secure}}
+  // ZTAI Security Shield: verify the short-lived auth token before serving tools.
+  verifyStartupToken();
+{{/if}}
+  const server = new McpServer({ name: {{json projectName}}, version: "0.1.0" });
+
+  for (const tool of tools) {
+    server.tool(tool.name, tool.description, tool.schema, tool.handler);
+  }
+
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+  console.error(
+    `[{{projectName}}] MCP server running over stdio with ${tools.length} tool(s).`,
+  );
+}
+
+main().catch((err) => {
+  console.error("Fatal error starting MCP server:", err);
+  process.exit(1);
+});

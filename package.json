@@ -1,0 +1,48 @@
+{
+  "name": "mcp-forge",
+  "version": "0.1.0",
+  "description": "Forge production-ready MCP (Model Context Protocol) servers from databases or OpenAPI specs, with an optional ZTAI zero-trust security shield.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "scaffold",
+    "generator",
+    "openapi",
+    "postgres",
+    "ai",
+    "security"
+  ],
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "mcp-forge": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src",
+    "prepare": "npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@apidevtools/swagger-parser": "^10.1.0",
+    "commander": "^12.1.0",
+    "handlebars": "^4.7.8",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@types/node": "^20.14.0",
+    "@types/pg": "^8.11.6",
+    "eslint": "^9.9.0",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.2.0"
+  }
+}
