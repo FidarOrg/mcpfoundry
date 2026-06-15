@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" width="880" height="500" role="img" aria-label="mcpfoundry terminal demo">
+  <style>
+    .mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 15px; }
+    .dim { fill: #6b7394; }
+    .cmd { fill: #e6e6e6; }
+    .flag { fill: #a9b4ff; }
+    .cyan { fill: #22d3ee; }
+    .green { fill: #9ece6a; }
+    .purple { fill: #bb9af7; }
+    .white { fill: #ffffff; font-weight: 700; }
+    .blue { fill: #7aa2f7; }
+  </style>
+
+  <rect x="1" y="1" width="878" height="498" rx="14" fill="#11111b" stroke="#2a2a3c"/>
+  <rect x="1" y="1" width="878" height="44" rx="14" fill="#181825"/>
+  <rect x="1" y="30" width="878" height="15" fill="#181825"/>
+  <circle cx="28" cy="23" r="6" fill="#ff5f57"/>
+  <circle cx="50" cy="23" r="6" fill="#febc2e"/>
+  <circle cx="72" cy="23" r="6" fill="#28c840"/>
+  <text x="440" y="28" text-anchor="middle" class="mono dim">mcpfoundry — terminal</text>
+
+  <g class="mono" xml:space="preserve">
+    <text x="26" y="86"><tspan class="cyan">$</tspan> <tspan class="cmd">mcpfoundry create </tspan><tspan class="flag">--type</tspan><tspan class="cmd"> openapi </tspan><tspan class="flag">--input</tspan><tspan class="cmd"> api.json </tspan><tspan class="flag">--dry-run</tspan></text>
+
+    <text x="26" y="124"><tspan class="green">✔</tspan> <tspan class="cmd">Dry run — 4 tool(s) would be generated:</tspan></text>
+    <text x="26" y="150"><tspan class="purple">   •</tspan> <tspan class="white">list_pets</tspan><tspan class="blue">(limit?: integer)</tspan></text>
+    <text x="26" y="176"><tspan class="purple">   •</tspan> <tspan class="white">create_pet</tspan><tspan class="blue">(name: string, tag?: string)</tspan></text>
+    <text x="26" y="202"><tspan class="purple">   •</tspan> <tspan class="white">get_pet_by_id</tspan><tspan class="blue">(pet_id: integer)</tspan></text>
+    <text x="26" y="228"><tspan class="purple">   •</tspan> <tspan class="white">delete_pet</tspan><tspan class="blue">(pet_id: integer)</tspan></text>
+
+    <text x="26" y="288"><tspan class="cyan">$</tspan> <tspan class="cmd">mcpfoundry create </tspan><tspan class="flag">--type</tspan><tspan class="cmd"> openapi </tspan><tspan class="flag">--input</tspan><tspan class="cmd"> api.json </tspan><tspan class="flag">--secure</tspan></text>
+
+    <text x="26" y="326"><tspan class="green">✔</tspan> <tspan class="cmd">Forged </tspan><tspan class="white">my-server</tspan><tspan class="cmd"> — 4 tools · nodejs · http · </tspan><tspan class="green">ZTAI shield ON</tspan></text>
+    <text x="26" y="352"><tspan class="dim">  → </tspan><tspan class="cyan">http://localhost:3000/mcp</tspan></text>
+
+    <text x="26" y="412"><tspan class="cyan">$</tspan> <tspan class="cmd">npm install &amp;&amp; npm start</tspan></text>
+    <text x="26" y="438"><tspan class="dim">  [my-server] MCP server listening on :3000/mcp </tspan><tspan class="green">✓</tspan></text>
+    <text x="26" y="468"><tspan class="green">▮</tspan></text>
+  </g>
+</svg>

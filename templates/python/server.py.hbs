@@ -5,6 +5,7 @@ on) and contains a TODO stub — wire it to your real data source.
 """
 import json
 import os
+import sys
 from typing import Annotated, Any
 {{#if secure}}
 import hashlib
@@ -92,7 +93,18 @@ def {{this.name}}(
 
 
 {{/each}}
+_TOOLS = [
+{{#each tools}}    ({{json this.name}}, {{json this.description}}),
+{{/each}}]
+
+
 def main() -> None:
+    if "--list-tools" in sys.argv:
+        print(f"\n{len(_TOOLS)} tool(s) exposed by {{projectName}}:\n")
+        for name, description in _TOOLS:
+            print(f"  • {name} — {description}")
+        print()
+        return
 {{#if secure}}{{#unless isHttp}}
     verify_startup_token()
 {{/unless}}{{/if}}

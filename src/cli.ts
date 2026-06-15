@@ -169,19 +169,26 @@ function printDryRun(tools: ToolSpec[]): void {
 }
 
 function printSummary(ctx: CompileContext, outputDir: string): void {
+  // Display a path relative to the current directory so we never leak the
+  // user's absolute/home path. Falls back to the absolute path only if the
+  // output lives outside the cwd tree.
+  const rel = path.relative(process.cwd(), outputDir);
+  const displayPath =
+    rel === "" ? "." : rel.startsWith("..") ? outputDir : rel;
+
   logger.plain();
   logger.success(
     `Forged ${logger.bold(ctx.projectName)} — ${ctx.tools.length} MCP tool(s), ${ctx.lang}, ${ctx.transport} transport${ctx.secure ? ", ZTAI Security Shield enabled" : ""}.`,
   );
-  logger.plain(`  ${logger.dim(outputDir)}`);
+  logger.plain(`  ${logger.dim(displayPath)}`);
   logger.plain();
   logger.plain("Next steps:");
   if (ctx.lang === "nodejs") {
-    logger.plain(`  cd ${outputDir}`);
+    logger.plain(`  cd ${displayPath}`);
     logger.plain("  npm install");
     logger.plain("  npm run build && npm start");
   } else {
-    logger.plain(`  cd ${outputDir}`);
+    logger.plain(`  cd ${displayPath}`);
     logger.plain("  pip install -r requirements.txt");
     logger.plain("  python server.py");
   }
