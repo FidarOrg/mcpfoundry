@@ -2,7 +2,7 @@
 
 <img src="docs/banner.svg" alt="mcpfoundry" width="820" />
 
-### Forge **secure, production-ready MCP servers** from your database or API — in under 5 minutes. ⚒️
+### Create **secure, production-ready MCP servers** from your database or API — in under 5 minutes. ⚒️
 
 [![npm version](https://img.shields.io/npm/v/mcpfoundry?color=8b5cf6&label=npm)](https://www.npmjs.com/package/mcpfoundry)
 [![npm downloads](https://img.shields.io/npm/dm/mcpfoundry?color=22d3ee)](https://www.npmjs.com/package/mcpfoundry)
@@ -10,7 +10,7 @@
 [![node](https://img.shields.io/node/v/mcpfoundry)](https://nodejs.org)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](./CONTRIBUTING.md)
 
-[**Quick Start**](#-quick-start-60-seconds) · [Features](#-why-mcpfoundry) · [Security](#-the-ztai-security-shield-optional) · [Examples](#-two-ways-to-forge) · [Contributing](./CONTRIBUTING.md)
+[**Quick Start**](#-quick-start-60-seconds) · [Features](#-why-mcpfoundry) · [Security](#-the-ztai-security-shield-optional) · [Examples](#-two-ways-to-create) · [Contributing](./CONTRIBUTING.md)
 
 </div>
 
@@ -58,7 +58,7 @@ That's a full MCP server — every endpoint turned into a validated tool — run
 
 ---
 
-## 🛠️ Two ways to forge
+## 🛠️ Two ways to create
 
 ### 1. From an OpenAPI / Swagger spec
 Every endpoint becomes a typed, validated MCP tool.

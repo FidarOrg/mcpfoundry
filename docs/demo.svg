@@ -30,7 +30,7 @@
 
     <text x="26" y="288"><tspan class="cyan">$</tspan> <tspan class="cmd">mcpfoundry create </tspan><tspan class="flag">--type</tspan><tspan class="cmd"> openapi </tspan><tspan class="flag">--input</tspan><tspan class="cmd"> api.json </tspan><tspan class="flag">--secure</tspan></text>
 
-    <text x="26" y="326"><tspan class="green">✔</tspan> <tspan class="cmd">Forged </tspan><tspan class="white">my-server</tspan><tspan class="cmd"> — 4 tools · nodejs · http · </tspan><tspan class="green">ZTAI shield ON</tspan></text>
+    <text x="26" y="326"><tspan class="green">✔</tspan> <tspan class="cmd">Created </tspan><tspan class="white">my-server</tspan><tspan class="cmd"> — 4 tools · nodejs · http · </tspan><tspan class="green">ZTAI shield ON</tspan></text>
     <text x="26" y="352"><tspan class="dim">  → </tspan><tspan class="cyan">http://localhost:3000/mcp</tspan></text>
 
     <text x="26" y="412"><tspan class="cyan">$</tspan> <tspan class="cmd">npm install &amp;&amp; npm start</tspan></text>

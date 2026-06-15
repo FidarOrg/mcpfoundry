@@ -19,7 +19,7 @@
   <rect x="0" y="0" width="12" height="340" rx="6" fill="url(#accent)"/>
 
   <text x="72" y="150" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="88" font-weight="800" fill="#ffffff">mcp<tspan fill="url(#accent)">foundry</tspan></text>
-  <text x="76" y="206" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="30" fill="#c7d2fe">Forge secure, production-ready MCP servers in minutes.</text>
+  <text x="76" y="206" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="30" fill="#c7d2fe">Create secure, production-ready MCP servers in minutes.</text>
 
   <g font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23">
     <rect x="74" y="246" width="812" height="52" rx="12" fill="#00000066" stroke="#ffffff22"/>

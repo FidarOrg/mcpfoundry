@@ -27,7 +27,7 @@ const program = new Command();
 program
   .name("mcpfoundry")
   .description(
-    "Forge production-ready MCP servers from databases or OpenAPI specs.",
+    "Create production-ready MCP servers from databases or OpenAPI specs.",
   )
   .version("0.1.0")
   .showHelpAfterError("(add --help for usage)");
@@ -178,7 +178,7 @@ function printSummary(ctx: CompileContext, outputDir: string): void {
 
   logger.plain();
   logger.success(
-    `Forged ${logger.bold(ctx.projectName)} — ${ctx.tools.length} MCP tool(s), ${ctx.lang}, ${ctx.transport} transport${ctx.secure ? ", ZTAI Security Shield enabled" : ""}.`,
+    `Created ${logger.bold(ctx.projectName)} — ${ctx.tools.length} MCP tool(s), ${ctx.lang}, ${ctx.transport} transport${ctx.secure ? ", ZTAI Security Shield enabled" : ""}.`,
   );
   logger.plain(`  ${logger.dim(displayPath)}`);
   logger.plain();

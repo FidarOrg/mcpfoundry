@@ -35,7 +35,7 @@ Enter
 Sleep 1500ms
 Show
 
-Type "# Forge a secure, production-ready MCP server from an OpenAPI spec"
+Type "# Create a secure, production-ready MCP server from an OpenAPI spec"
 Enter
 Sleep 800ms
 Type "npx mcpfoundry create --type openapi --input examples/petstore.openapi.json --output petstore-mcp --secure"

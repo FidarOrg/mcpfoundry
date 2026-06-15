@@ -6,14 +6,14 @@ import { z } from "zod";
  * Each tool ships a Zod schema (parameter hardening, always on) and a handler
  * stub — fill in the TODO with your real query / request logic.
  */
-export interface ForgeTool {
+export interface McpTool {
   name: string;
   description: string;
   schema: Record<string, z.ZodTypeAny>;
   handler: (args: any) => Promise<{ content: { type: "text"; text: string }[] }>;
 }
 
-export const tools: ForgeTool[] = [
+export const tools: McpTool[] = [
 {{#each tools}}
   {
     name: {{json this.name}},
