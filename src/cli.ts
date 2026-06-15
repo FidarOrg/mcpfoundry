@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { readFileSync } from "node:fs";
 import path from "node:path";
 import { Command } from "commander";
 import { introspectDatabase } from "./parsers/database";
@@ -22,6 +23,11 @@ interface CreateOptions {
   dryRun: boolean;
 }
 
+// Read the real version from package.json so `--version` never goes stale.
+const { version } = JSON.parse(
+  readFileSync(path.join(__dirname, "..", "package.json"), "utf8"),
+) as { version: string };
+
 const program = new Command();
 
 program
@@ -29,7 +35,7 @@ program
   .description(
     "Create production-ready MCP servers from databases or OpenAPI specs.",
   )
-  .version("0.1.0")
+  .version(version)
   .showHelpAfterError("(add --help for usage)");
 
 program
