@@ -41,6 +41,8 @@ cd petstore-mcp && npm install && npm start
 
 That's a full MCP server — every endpoint turned into a validated tool — running. No SDK wrangling, no transport plumbing, no boilerplate.
 
+**Connect it to Claude in one step:** every generated project includes a ready-to-use **`.mcp.json`**. Open the folder in **Claude Code** (it auto-detects the file), or paste the block into **Claude Desktop**'s config. The generated `README.md` has the exact snippet.
+
 ---
 
 ## ✨ Why mcpfoundry?
@@ -55,6 +57,7 @@ That's a full MCP server — every endpoint turned into a validated tool — run
 | 🌐 **HTTP or stdio** | Streamable **HTTP by default**; `--no-http` for stdio (Claude Desktop / Claude Code style). |
 | 🐍 **Node.js & Python** | First-class `@modelcontextprotocol/sdk` (TS) **and** FastMCP (Python) output. |
 | 🔌 **DB & OpenAPI** | Introspect Postgres into CRUD tools, or convert any OpenAPI/Swagger spec (file **or URL**, JSON/YAML). |
+| 📎 **One-click Claude connection** | Every project ships a `.mcp.json` — auto-detected by Claude Code, paste-ready for Claude Desktop. |
 
 ---
 

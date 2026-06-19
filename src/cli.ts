@@ -199,6 +199,11 @@ function printSummary(ctx: CompileContext, outputDir: string): void {
     logger.plain("  python server.py");
   }
 
+  logger.plain();
+  logger.plain(
+    `  Connect to Claude: a ${logger.bold(".mcp.json")} is included (auto-detected by Claude Code).`,
+  );
+
   if (ctx.isHttp) {
     logger.plain();
     logger.plain(`  Serves MCP over HTTP at ${logger.bold(`http://localhost:${ctx.port}/mcp`)} (override with PORT env).`);

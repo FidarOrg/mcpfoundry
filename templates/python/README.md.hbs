@@ -35,6 +35,35 @@ This server talks JSON-RPC over stdin/stdout. Configure your MCP client to run
 `python /abs/path/to/server.py`.
 {{/if}}
 
+## 🔌 Connect to Claude (Code / Desktop)
+
+This project ships a ready-to-use **`.mcp.json`**:
+
+```json
+{
+  "mcpServers": {
+    "{{projectName}}": {
+{{#if isHttp}}
+      "type": "http",
+      "url": "http://localhost:{{port}}/mcp"{{#if secure}},
+      "headers": { "Authorization": "Bearer ${ZTAI_AUTH_TOKEN}" }{{/if}}
+{{else}}
+      "command": "python",
+      "args": ["server.py"]{{#if secure}},
+      "env": { "JWT_SECRET": "${JWT_SECRET}", "ZTAI_AUTH_TOKEN": "${ZTAI_AUTH_TOKEN}" }{{/if}}
+{{/if}}
+    }
+  }
+}
+```
+
+**Claude Code** — open this folder in Claude Code; it auto-detects `.mcp.json`. {{#if isHttp}}Start the server first with `python server.py`.{{else}}Use your venv's interpreter (e.g. `.venv/bin/python`) for `command` if it isn't on `PATH`.{{/if}}
+
+**Claude Desktop** — paste the block above into `claude_desktop_config.json`{{#unless isHttp}}, replacing `server.py` with its **absolute** path (and `python` with your venv interpreter){{/unless}}, then restart the app.
+{{#if secure}}
+> 🔐 Secure server: set `JWT_SECRET`{{#if isHttp}} and provide your token as `ZTAI_AUTH_TOKEN`{{else}} and `ZTAI_AUTH_TOKEN`{{/if}}. Claude Code expands the `${...}` references; for Claude Desktop, paste the literal values.
+{{/if}}
+
 ## Tools
 
 {{#each tools}}

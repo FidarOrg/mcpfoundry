@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "{{projectName}}": {
+{{#if isHttp}}
+      "type": "http",
+      "url": "http://localhost:{{port}}/mcp"{{#if secure}},
+      "headers": { "Authorization": "Bearer ${ZTAI_AUTH_TOKEN}" }{{/if}}
+{{else}}
+      "command": "python",
+      "args": ["server.py"]{{#if secure}},
+      "env": { "JWT_SECRET": "${JWT_SECRET}", "ZTAI_AUTH_TOKEN": "${ZTAI_AUTH_TOKEN}" }{{/if}}
+{{/if}}
+    }
+  }
+}
