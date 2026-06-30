@@ -1,0 +1,212 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Xquik API",
+    "version": "1.0",
+    "description": "A compact OpenAPI 3.1 sample for X data endpoints."
+  },
+  "servers": [
+    {
+      "url": "https://xquik.com"
+    }
+  ],
+  "security": [
+    {
+      "apiKey": []
+    },
+    {
+      "oauthBearer": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Tweets",
+      "description": "Tweet lookup and search operations."
+    },
+    {
+      "name": "Users",
+      "description": "X user profile operations."
+    }
+  ],
+  "paths": {
+    "/api/v1/x/tweets/{id}": {
+      "get": {
+        "operationId": "lookupTweet",
+        "summary": "Get tweet with full text, author, metrics and media",
+        "tags": [
+          "Tweets"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          },
+          {
+            "oauthBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Tweet ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tweet with author",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TweetDetailResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/x/users/{id}": {
+      "get": {
+        "operationId": "getUser",
+        "summary": "Get user profile with follower counts and verification",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          },
+          {
+            "oauthBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "X username without @ or user ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "API key passed via the x-api-key header."
+      },
+      "oauthBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "OAuth 2.1 access token."
+      }
+    },
+    "schemas": {
+      "TweetDetailResponse": {
+        "type": "object",
+        "required": [
+          "tweet",
+          "author"
+        ],
+        "properties": {
+          "tweet": {
+            "$ref": "#/components/schemas/TweetDetail"
+          },
+          "author": {
+            "$ref": "#/components/schemas/TweetAuthor"
+          }
+        }
+      },
+      "TweetDetail": {
+        "type": "object",
+        "required": [
+          "id",
+          "text"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "likeCount": {
+            "type": "integer"
+          },
+          "retweetCount": {
+            "type": "integer"
+          }
+        }
+      },
+      "TweetAuthor": {
+        "type": "object",
+        "required": [
+          "id",
+          "username"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserProfile": {
+        "type": "object",
+        "required": [
+          "id",
+          "username"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "followers": {
+            "type": "integer"
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
